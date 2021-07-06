@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const userActionsSchema = new Schema(
   {
+    // user should be taken from another Schema
     user: {type: Schema.Types.ObjectId, ref: 'User'},
     action: {type: String, required: true},
     searchKeyword: String,
@@ -17,8 +18,8 @@ const userActionsSchema = new Schema(
     },
   },
   {
-    // Use Unix timestamps
-    timestamps: {currentTime: () => Math.floor(Date.now() / 1000)},
+    //saves createdAt and updatedAt
+    timestamps: true,
     collection: process.env.MONGO_DB_USER_ACTIONS_COLLECTION,
   },
 );
